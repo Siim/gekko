@@ -65,7 +65,6 @@ Trader.prototype.getFee = function(callback) {
       callback(err);
 
     callback(false, data.fee / 100);
-    console.log('data.fee: ', data.fee)
   }
   this.bitstamp.balance(_.bind(set, this));
 }
