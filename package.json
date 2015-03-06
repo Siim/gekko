@@ -26,10 +26,13 @@
     "semver": "2.2.1",
     "kraken-api": "0.1.x",
     "lakebtc_nodejs": "0.1.x",
-	"pushbullet": "1.4.3"
+	  "pushbullet": "1.4.3"
   },
   "devDependencies": {
-    "nodeunit": "0.8.2"
+    "nodeunit": "0.8.2",
+    "mocha": "latest",
+    "sinon": "latest",
+    "chai": "latest"
   },
   "engines": { "node": ">=0.10.x" },
   "repository": {

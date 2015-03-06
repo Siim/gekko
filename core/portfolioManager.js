@@ -67,13 +67,13 @@ Manager.prototype.init = function(callback) {
   // Because on cex.io your asset grows refresh and
   // display portfolio stats every 5 minutes
   if(this.exchange.name === 'cex.io')
-    setInterval(this.recheckPortfolio, util.minToMs(5));  
+    setInterval(this.recheckPortfolio, util.minToMs(5));
 }
 
 Manager.prototype.setPortfolio = function(callback) {
   var set = function(err, portfolio) {
     this.portfolio = portfolio;
-    
+
     if(_.isFunction(callback))
       callback();
   };
@@ -83,7 +83,7 @@ Manager.prototype.setPortfolio = function(callback) {
 Manager.prototype.setFee = function(callback) {
   var set = function(err, fee) {
     this.fee = fee;
-    
+
     if(_.isFunction(callback))
       callback();
   };
@@ -93,7 +93,7 @@ Manager.prototype.setFee = function(callback) {
 Manager.prototype.setTicker = function(callback) {
   var set = function(err, ticker) {
     this.ticker = ticker;
-    
+
     if(_.isFunction(callback))
       callback();
   }
@@ -110,15 +110,15 @@ Manager.prototype.getBalance = function(fund) {
 
 // This function makes sure order get to the exchange
 // and initiates follow up to make sure the orders will
-// get executed. This is the backbone of the portfolio 
+// get executed. This is the backbone of the portfolio
 // manager.
-// 
+//
 // How this is done depends on a couple of things:
-// 
+//
 // is this a directExchange? (does it support MKT orders)
 // is this a infinityOrderExchange (does it support order
 // requests bigger then the current balance?)
-Manager.prototype.trade = function(what) {
+Manager.prototype.trade = function(what, callback) {
   if(what !== 'BUY' && what !== 'SELL')
     return;
 
@@ -135,7 +135,7 @@ Manager.prototype.trade = function(what) {
       if(this.infinityOrderExchange)
         amount = 10000;
       else
-        amount = this.getBalance(this.currency) / (this.ticker.ask+(this.ticker.ask*this.fee));
+        amount = this.getBalance(this.currency) / (parseFloat(this.ticker.ask) + (parseFloat(this.ticker.ask)*this.fee));
 
       // can we just create a MKT order?
       if(this.directExchange)
@@ -168,8 +168,12 @@ Manager.prototype.trade = function(what) {
         log.debug('Trade Percent: adjusting amount', amount, 'by ', this.tradePercent, '%');
         amount = amount * this.tradePercent / 100;
       }
-      
+
       this.sell(amount, price);
+    }
+
+    if(callback) {
+      callback();
     }
   };
   async.series([

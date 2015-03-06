@@ -10,7 +10,7 @@ You are looking at the brand new and completetly different version of Gekko. We'
 
 -Gordon Gekko
 
-Gekko is a Bitcoin trading bot and backtesting platform that connects to popular Bitcoin exchanges. It is written in javascript and runs on [nodejs](http://nodejs.org). 
+Gekko is a Bitcoin trading bot and backtesting platform that connects to popular Bitcoin exchanges. It is written in javascript and runs on [nodejs](http://nodejs.org).
 
 This is the open source do-it-yourself version, we are planning on running hosted Gekkos in the cloud which does not require you to download and install anything, configure any textfiles or deal with the commandline. If you are looking for such a solution, sign up at [Wizbit](http://wizb.it) and we'll let you know once it's out!
 
@@ -81,8 +81,8 @@ You need to download Gekko's dependencies, which can easily be done with [npm](h
 
 ## Configuring Gekko
 
-> Configuring Gekko consists of three parts: 
-> 
+> Configuring Gekko consists of three parts:
+>
 > - Watching a realtime market
 > - Automate trading advice
 > - Enabling plugins
@@ -120,6 +120,11 @@ If you want to contribute or are interested in how Gekko works:
 * More exchanges (bitfinex, btcchina)
 * More indicators
 * Webbased interface
+* Write more tests
+
+## Running mocha tests
+    npm install mocha -g
+    mocha mocha_test
 
 ## Credits
 
