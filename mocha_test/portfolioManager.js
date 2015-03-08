@@ -33,7 +33,7 @@ describe('Portfolio Manager', function(){
       // setportfolio
       // setfee
       this.portfolio = [ { name: 'BTC', amount: 0.99 }, { name: 'USD', amount: 242.2 } ];
-      this.fee = 0.0020;
+      this.fee = 0.0025;
       callback();
     });
 
@@ -64,7 +64,7 @@ describe('Portfolio Manager', function(){
       });
 
       it('should have fee', function(){
-        manager.fee.should.equal(0.0020);
+        manager.fee.should.equal(0.0025);
       });
 
       it('should have fee type that is number', function(){
