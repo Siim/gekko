@@ -77,6 +77,8 @@ Trader.prototype.buy = function(amount, price, callback) {
     callback(null, result.id);
   };
 
+  // TODO: fees are hardcoded here?
+  // amount *= 0.995; // remove fees
   // prevent: Ensure that there are no more than 8 digits in total.
   amount *= 100000000;
   amount = Math.floor(amount);
@@ -91,6 +93,11 @@ Trader.prototype.sell = function(amount, price, callback) {
 
     callback(null, result.id);
   };
+
+
+  amount *= 10000000;
+  amount = Math.floor(amount);
+  amount /= 10000000;
 
   this.bitstamp.sell(amount, price, _.bind(set, this));
 }

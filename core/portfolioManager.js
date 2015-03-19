@@ -135,7 +135,7 @@ Manager.prototype.trade = function(what, callback) {
       if(this.infinityOrderExchange)
         amount = 10000;
       else
-        amount = parseFloat((this.getBalance(this.currency) / (parseFloat(this.ticker.ask) + (parseFloat(this.ticker.ask)*this.fee))).toFixed(4);
+        amount = parseFloat((this.getBalance(this.currency) / (parseFloat(this.ticker.ask) + (parseFloat(this.ticker.ask)*this.fee))).toFixed(4));
 
       // can we just create a MKT order?
       if(this.directExchange)
@@ -156,7 +156,7 @@ Manager.prototype.trade = function(what, callback) {
       if(this.infinityOrderExchange)
         amount = 10000;
       else
-        amount = this.getBalance(this.asset);
+        amount = parseFloat(this.getBalance(this.asset) - this.getBalance(this.asset) * this.fee).toFixed(4);
 
       // can we just create a MKT order?
       if(this.directExchange)
